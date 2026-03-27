@@ -5,11 +5,14 @@ editor: visual
 format:
   html:
     embed-resources: true
+    code-fold: true #suggestion
 execute:
   echo: true
   message: false
   warning: false
 ---
+
+<!--# Suggestion above. It was in an assignment option awhile ago I like. Sometimes helpful in the html document. Definitely a preference, but I think it can be a cleaner look. -->
 
 # The Office
 
@@ -28,6 +31,8 @@ office <- schrute::theoffice %>%
 office_ngrams4 <- office %>%
   unnest_tokens(ngram, text, token = "ngrams", n = 4)
 ```
+
+<!--# I really like the concise setup chunk. -->
 
 ## 1. Count the number of [lines]{.underline} in which "that's what she said" is said in *The Office* (yes, we discussed this previously)
 
@@ -71,7 +76,7 @@ office %>%
   select(line, character, text)
 ```
 
--   Yes
+-   Yes <!--# I  like that you used select to appropriately display other instances of "twss" that we would be interested in.-->
 
 ### "that's what she a"
 
@@ -87,7 +92,7 @@ office %>%
   select(line, character, text)
 ```
 
--   The ngram "that's what she a" corresponds to a line where Michael begins the joke but stops himself, transcribed as "That's what she... a lot of places are like that." This suggests that incomplete versions of the phrase should also be included in the analysis, as they represent instances of the joke even when "said" is not spoken.
+-   The ngram "that's what she a" corresponds to a line where Michael begins the joke but stops himself, transcribed as "That's what she... a lot of places are like that." This suggests that incomplete versions of the phrase should also be included in the analysis, as they represent instances of the joke even when "said" is not spoken. <!--# I really like the use of targetting certain lines to get more context to see if they belong in the count. -->
 
 ## 4. Explore whether "what she said" included in `ngram4` allows you to determine any additional phrases that should be included.
 
@@ -101,7 +106,7 @@ office_ngrams4 %>%
 
 ## 5. Print all the [unique]{.underline} lines that contain the words "that", "what", "she" and "said", but do NOT contain the string "that's what she said". Decide whether any of these lines should be included as saying "that's what she said".
 
-```{{r}}
+```{r}
 office%>%
   filter(
     str_detect(tolower(text), "that") &
@@ -113,7 +118,7 @@ office%>%
   distinct(text)
 ```
 
--   The resulting phrases should not be included.
+-   The resulting phrases should not be included. <!--# There were extra brackets in the code chunk that wasn't allowing the code to run -->
 
 ## 6. Create a frequency distribution of X, where X is determined from the third word in "that's what X said".
 
@@ -153,3 +158,5 @@ office <- office %>%
 office %>%
   count(twss_cat)
 ```
+
+<!--# Chose a frequency distribution of 3 variables where 0 was unidentified, 1 was our classic "that's what she said", and 3 is from a "that's what she". Makes sense to me!-->
