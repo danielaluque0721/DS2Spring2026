@@ -28,6 +28,7 @@ library(schrute)
 office <- schrute::theoffice %>%
   mutate(line = row_number())
 
+
 office_ngrams4 <- office %>%
   unnest_tokens(ngram, text, token = "ngrams", n = 4)
 ```
